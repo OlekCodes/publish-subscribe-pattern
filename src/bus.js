@@ -18,4 +18,16 @@ export class Bus {
             });
         }
     }
+
+    unsubscribe(event, handler) {
+        let handlers = this.events.get(event);
+
+        if (handlers) handlers.delete(handler);
+
+        this.events.set(event, handlers);
+    }
+
+    clear() {
+        this.events.clear();
+    }
 }
